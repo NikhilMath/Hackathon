@@ -7,6 +7,17 @@ class TripsController < ApplicationController
   def show
   end
 
+  def create
+    @trip = current_user.trips.new(trip_params)
+    if @trip.save 
+      flash[:success] = "Trip Created"
+      redirect_to trips_path
+    else
+      flash[:error] = "Error #{@trip.errors.full_messages.join('\n')}"
+      render :new
+    end
+  end
+
   def new
     @trip = Trip.new 
   end
