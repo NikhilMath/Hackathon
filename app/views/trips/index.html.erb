@@ -1,2 +1,19 @@
-<h1>Trips#index</h1>
-<p>Find me in app/views/trips/index.html.erb</p>
+# <h1>Trips#index</h1>
+# <p>Find me in app/views/trips/index.html.erb</p>
+<%= button_to 'Log out', destroy_user_session_path, method: :delete %>
+<h2>Welcome <%= current_user.first_name %></h2>
+
+<hr />
+<%= link_to 'add trip', new_trip_path %>
+<h3>
+  your trips
+</h3>
+
+<ul>
+  <% @trips.each do |trip| %>
+    <li>
+      <%= trip.name %>: <%= trip.name %>
+    </li>
+  <% end %>
+</ul>
+
